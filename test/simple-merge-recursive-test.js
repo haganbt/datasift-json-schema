@@ -15,7 +15,6 @@ vows.describe('Merge JSON objects recursively').addBatch({
          },
 
         'contains all parent keys and associated values': function (topic) {
-            //assert.isObject(topic);
             assert.deepEqual ({ o: { a: 'a', b: 'c', c: 'd' } }, topic);
         }
     }
