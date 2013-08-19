@@ -6,7 +6,9 @@
     "start": "node app"
   },
   "dependencies": {
-    "merge-recursive": "0.0.3"
+    "merge-recursive": "0.0.3",
+    "express": "3.x",
+    "jade": "0.34.x"
   },
   "devDependencies": {
     "vows": "0.7.0"
