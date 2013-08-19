@@ -29,9 +29,9 @@ var storeRoutes = require('./lib/routes/store')({
 });
 
 // Routes
-app.get('/', routes.index);
-app.get('/view', storeRoutes.show);
-app.post('/data', storeRoutes.create);
+//app.get('/', routes.index);
+app.get('/', storeRoutes.show);
+app.post('/data', storeRoutes.save);
 
 
 http.createServer(app).listen(app.get('port'), function () {
