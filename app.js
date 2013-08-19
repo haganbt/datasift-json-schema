@@ -22,7 +22,17 @@ app.configure(function () {
 app.configure('development', function () {
 });
 
+
+
+var storeRoutes = require('./lib/routes/store')({
+  storeManager: exports.storeManager
+});
+
+// Routes
 app.get('/', routes.index);
+app.get('/view', storeRoutes.show);
+app.post('/data', storeRoutes.create);
+
 
 http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
