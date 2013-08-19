@@ -11,7 +11,8 @@
     "jade": "0.34.x"
   },
   "devDependencies": {
-    "vows": "0.7.0"
+    "vows": "0.7.0",
+    "request": "2.27.0"
   },
   "repository": {
     "type": "git",
