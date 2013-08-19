@@ -41,9 +41,19 @@ vows.describe('Merge JSON objects recursively').addBatch({
 					return merge.recursive(out, JSON.parse(fs.readFileSync('./test/sample_data/interaction.content.json'))
 					);
          },
-        'contains the interaction.author.link and interaction.author.content keys and values': function (topic) {
+        'contains the interaction.author.link and interaction.author.content keys': function (topic) {
         	assert.deepEqual ({"interaction":{"link":"http://twitter.com/foo/1234","content":"Hello World!"}}, topic);
         }
-    }   
+    },
+    
+    'Merging two parent items': {
+         topic: function () { 
+					return merge.recursive(JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')), JSON.parse(fs.readFileSync('./test/sample_data/klout.json'))
+					);
+         },
+        'contains both interaction and klout parent items': function (topic) {
+        	assert.deepEqual ({"interaction":{},"klout":{"amplification":5,"network":8.95,"score":30,"topics":["photography","super bowl","typos","iran"],"true_reach":124}}, topic);
+        }
+    }    
     
 }).export(module); // Export the Suite
