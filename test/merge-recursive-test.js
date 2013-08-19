@@ -6,21 +6,12 @@ var   vows 		= require('vows')
     , fs			= require('fs')
     ;
 
-// Test data
-
-var interaction 								= JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')),
-		interaction_link						= JSON.parse(fs.readFileSync('./test/sample_data/interaction.link.json')),
-		interaction_author_username = JSON.parse(fs.readFileSync('./test/sample_data/interaction.author.username.json'))
-		;
-
-
-
 vows.describe('Merge JSON objects recursively').addBatch({
     'Merging a child element': {
-         topic: function () { 
+         topic: function () {
 	        return merge.recursive(
-	        	interaction,
-	        	interaction_link
+	        	JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')),
+	        	JSON.parse(fs.readFileSync('./test/sample_data/interaction.link.json'))
 					);
          },
 
@@ -30,15 +21,16 @@ vows.describe('Merge JSON objects recursively').addBatch({
    },
     'Merging a second level child element': {
          topic: function () { 
+         	interaction = JSON.parse(fs.readFileSync('./test/sample_data/interaction.json'));
 	        return merge.recursive(
-	        	interaction,
-	        	interaction_author_username
+	        	JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')),
+	        	JSON.parse(fs.readFileSync('./test/sample_data/interaction.author.username.json'))
 					);
          },
 
         'contains the interaction.author.username key and value': function (topic) {
         	assert.deepEqual ({"interaction":{"author":{"username":"syvzwvn"}}}, topic);
         }
-    }    
+    }  
     
 }).export(module); // Export the Suite
