@@ -8,7 +8,7 @@
         "A POST to /": {
           topic: function () {
             request({
-              uri: 'http://localhost:3000/',
+              uri: 'http://localhost:3000/data',
               method: 'POST',
               body: JSON.stringify({ test: 'data' }),
               headers: {
@@ -19,12 +19,9 @@
           "should respond with 200": function (err, res, body) {
             assert.equal(res.statusCode, 200);
           },
-          "should respond with ok": function (err, res, body) {
+          "should respond with success TRUE": function (err, res, body) {
             var result = JSON.parse(body);
-            assert.equal(result.ok, true);
-          },
-          "should respond with x-test-header": function (err, res, body) {
-            assert.include(res.headers, 'x-test-header');
+            assert.equal(result.success, true);
           }
         }
       }

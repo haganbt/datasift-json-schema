@@ -23,13 +23,11 @@ app.configure('development', function () {
 });
 
 
-
 var storeRoutes = require('./lib/routes/store')({
   storeManager: exports.storeManager
 });
 
 // Routes
-//app.get('/', routes.index);
 app.get('/', storeRoutes.show);
 app.post('/data', storeRoutes.save);
 
