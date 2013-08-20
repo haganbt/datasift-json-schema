@@ -27,7 +27,7 @@
           }
         }
       },   
-      "sumbitting array delimited interactions": {
+      "sumbitting multiple array delimited interactions": {
           topic: function () {
             request({
               uri: 'http://localhost:3000/data',
@@ -41,8 +41,7 @@
           "should respond with 200": function (err, res, body) {
             assert.equal(res.statusCode, 200);
           }
-        }      
-      
+        }
       
       
     }
