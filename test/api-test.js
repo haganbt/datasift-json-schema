@@ -2,10 +2,10 @@
       vows = require('vows'),
       assert = require('assert');
 
-  vows.describe('your/awesome/api').addBatch({
-    "When using your awesome api": {
-      "and your awesome resource": {
-        "A POST to /": {
+  vows.describe('JSON schema API').addBatch({
+    "When using the API": {
+      "testing the push delivery endpoint": {
+        "A POST to /data": {
           topic: function () {
             request({
               uri: 'http://localhost:3000/data',
