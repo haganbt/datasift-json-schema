@@ -1,8 +1,6 @@
 datasift-json-schema
 ====================
 
-Work in progress...
-
 Dynamically create a JSON schema from a DataSift stream.
 
 
