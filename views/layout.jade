@@ -37,10 +37,13 @@ head
               a(href='#contact') Contact
 
     .container
-      .starter-template
-        h1 Bootstrap starter template
-        p
-          block content
+      .row
+        .col-md-11
+          textarea(id="theTextarea")
+           block content
+        .col-md-1 .col-md-4
+
+      
 
     script(src='/js/jquery.js')
     script(src='/js/bootstrap.min.js')
