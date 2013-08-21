@@ -7,7 +7,7 @@ var   vows 		= require('vows')
     ;
 
 vows.describe('Merge JSON objects recursively').addBatch({
-    'Merging a child element': {
+    'with a child element': {
          topic: function () {
 	        return merge.recursive(
 	        	JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')),
@@ -19,7 +19,7 @@ vows.describe('Merge JSON objects recursively').addBatch({
         }
    },
    
-    'Merging a second level child element': {
+    'with a second level child element': {
          topic: function () { 
 	        return merge.recursive(
 	        	JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')),
@@ -31,7 +31,7 @@ vows.describe('Merge JSON objects recursively').addBatch({
         }
     },
     
-    'Merging two child items': {
+    'with two child items': {
          topic: function () { 
          	var out = merge.recursive(
 	        	JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')),
@@ -46,7 +46,7 @@ vows.describe('Merge JSON objects recursively').addBatch({
         }
     },
     
-    'Merging two parent items': {
+    'with two parent items': {
          topic: function () { 
 					return merge.recursive(JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')), JSON.parse(fs.readFileSync('./test/sample_data/klout.json'))
 					);
@@ -56,7 +56,7 @@ vows.describe('Merge JSON objects recursively').addBatch({
         }
     },
     
-    'Merging two identical parent items': {
+    'with two identical parent items': {
          topic: function () { 
 					return merge.recursive(JSON.parse(fs.readFileSync('./test/sample_data/interaction.link.json')), JSON.parse(fs.readFileSync('./test/sample_data/interaction.link.json')));
          },
