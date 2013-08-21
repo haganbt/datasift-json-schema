@@ -2,7 +2,7 @@
 
 var   vows 		= require('vows')
     , assert 	= require('assert')
-    , merge 	= require('../lib/merge')
+    , merge 	= require('merge-recursive')
     , fs			= require('fs')
     ;
 
