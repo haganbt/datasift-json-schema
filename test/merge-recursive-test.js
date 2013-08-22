@@ -2,7 +2,7 @@
 
 var   vows 		= require('vows')
     , assert 	= require('assert')
-    , merge 	= require('merge-recursive')
+    , merge   = require('../lib/merge')
     , fs			= require('fs')
     ;
 
@@ -63,6 +63,16 @@ vows.describe('Merge JSON objects recursively').addBatch({
         'returns only a single item': function (topic) {
         	assert.deepEqual ({"interaction":{"link":"http://twitter.com/foo/1234"}}, topic);
         }
-    }    
+    }/*,
+    
+    'with many child list items': {
+         topic: function () { 
+					return merge.recursive(JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')), JSON.parse(fs.readFileSync('./test/links.multiple.children.json'))
+					);
+         },
+        'the lists are truncated to 3 items': function (topic) {
+        	assert.deepEqual (true, topic);
+        }
+    },   */ 
     
 }).export(module); // Export the Suite
