@@ -15,7 +15,7 @@ vows.describe('Merge JSON objects recursively').addBatch({
 					);
          },
         'contains the interaction.link key and value': function (topic) {
-        	assert.deepEqual ({"interaction":{"link":"http://twitter.com/foo/1234"}}, topic);
+        	assert.isString(topic.interaction.link);
         }
    },
    
@@ -27,7 +27,7 @@ vows.describe('Merge JSON objects recursively').addBatch({
 					);
          },
         'contains the interaction.author.username key and value': function (topic) {
-        	assert.deepEqual ({"interaction":{"author":{"username":"syvzwvn"}}}, topic);
+        	assert.isString(topic.interaction.author.username);
         }
     },
     
@@ -41,8 +41,11 @@ vows.describe('Merge JSON objects recursively').addBatch({
 					return merge.recursive(out, JSON.parse(fs.readFileSync('./test/sample_data/interaction.content.json'))
 					);
          },
-        'contains the interaction.author.link and interaction.author.content keys': function (topic) {
-        	assert.deepEqual ({"interaction":{"link":"http://twitter.com/foo/1234","content":"Hello World!"}}, topic);
+        'contains the interaction.link key and value': function (topic) {
+        	assert.isString(topic.interaction.link);
+        },
+        'contains the interaction.content key and value': function (topic) {
+        	assert.isString(topic.interaction.content);
         }
     },
     
@@ -51,8 +54,11 @@ vows.describe('Merge JSON objects recursively').addBatch({
 					return merge.recursive(JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')), JSON.parse(fs.readFileSync('./test/sample_data/klout.json'))
 					);
          },
-        'contains both interaction and klout parent items': function (topic) {
-        	assert.deepEqual ({"interaction":{},"klout":{"amplification":5,"network":8.95,"score":30,"topics":["photography","super bowl","typos","iran"],"true_reach":124}}, topic);
+        'contains the interaction parent items': function (topic) {
+        	assert.isObject(topic.interaction);
+        },
+        'contains the klout parent items': function (topic) {
+        	assert.isObject(topic.klout);
         }
     },
     
@@ -63,16 +69,16 @@ vows.describe('Merge JSON objects recursively').addBatch({
         'returns only a single item': function (topic) {
         	assert.deepEqual ({"interaction":{"link":"http://twitter.com/foo/1234"}}, topic);
         }
-    }/*,
+    },
     
     'with many child list items': {
          topic: function () { 
-					return merge.recursive(JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')), JSON.parse(fs.readFileSync('./test/links.multiple.children.json'))
+					return merge.recursive(JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')), JSON.parse(fs.readFileSync('./test/sample_data/links.multiple.children.json'))
 					);
          },
         'the lists are truncated to 3 items': function (topic) {
-        	assert.deepEqual (true, topic);
+        	assert.lengthOf (topic.links.code, 3);
         }
-    },   */ 
+    },
     
 }).export(module); // Export the Suite
