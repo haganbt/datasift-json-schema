@@ -76,9 +76,13 @@ vows.describe('Merge JSON objects recursively').addBatch({
 					return merge.recursive(JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')), JSON.parse(fs.readFileSync('./test/sample_data/links.multiple.children.json'))
 					);
          },
-        'the lists are truncated to 3 items': function (topic) {
+        'the links.code values are truncated to 3 items': function (topic) {
         	assert.lengthOf (topic.links.code, 3);
+        },
+        'the links.created_at values are truncated to 3 items': function (topic) {
+        	assert.lengthOf (topic.links.created_at, 3);
         }
+        
     },
     
 }).export(module); // Export the Suite
