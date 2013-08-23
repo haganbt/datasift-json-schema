@@ -22,8 +22,8 @@ html
       font-size: 11pt;
       }
       #jsoneditor {
-      width: 500px;
-      height: 500px;
+      width: 800px;
+      height: 600px;
       }
   body
     p
@@ -35,7 +35,7 @@ html
         option(value='code') code
         option(value='text') text
     #jsoneditor
-    script(type='text/javascript')
+    script.
       // create switchable mode
       var mode = document.getElementById('mode');
       mode.onchange = function () {
@@ -49,6 +49,6 @@ html
       alert(err.toString());
       }
       };
-      var json = "#{data}";
+      var json = !{data};
       var editor = new jsoneditor.JSONEditor(container, options, json);
 
