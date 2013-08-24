@@ -1,4 +1,37 @@
 extends layout
 
 block content
- //= data
+    .row
+     .col-md-9
+      br
+      p
+       select#mode.form-control
+         option(value='tree') Tree
+         option(value='view') View
+         option(value='form') Form
+         option(value='code') Code
+         option(value='text') Text
+          
+      #jsoneditor
+       script.
+        // create switchable mode
+        var mode = document.getElementById('mode');
+        mode.onchange = function () {
+        editor.setMode(mode.value);
+        };
+        // create the editor
+        var container = document.getElementById("jsoneditor");
+        var options = {
+        mode: mode.value,
+        error: function (err) {
+        alert(err.toString());
+        }
+        };
+        var json = !{data};
+        var editor = new jsoneditor.JSONEditor(container, options, json);
+        
+     .col-md-3
+      br
+      p 
+       small Interactions Analyzed: 
+        =count
