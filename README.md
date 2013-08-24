@@ -12,11 +12,9 @@ STATUS: Currently a JSON object is dynamically created, merging new properties a
 
 ```npm install```
 
-Configure a DataSift HTTP Push destination to:
+Configure a DataSift HTTP Push destination to ```<your_server>/data```.
 
-```<your_server>/data```
-
-Configure a DataSift filter to deliver a random data sample (or whatever you need) e.g.
+Define a DataSift filter to deliver a random data sample (or whatever you need) e.g.
 
 ```interaction.sample < 0.001```
 
