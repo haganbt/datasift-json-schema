@@ -1,6 +1,5 @@
 'use strict';
 var express = require('express')
-  , routes = require('./lib/routes')
   , http = require('http')
   , path = require('path')
   ;
