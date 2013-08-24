@@ -20,7 +20,7 @@ Define a DataSift filter to deliver a random data sample (or whatever you need) 
 
 ### Tests
 
-Make sure vows is installed globally:
+Install Vows globally:
 
 ```npm install vows -g```
 
