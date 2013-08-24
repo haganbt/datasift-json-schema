@@ -37,4 +37,5 @@ Run tests:
 
  * Generate schema from curated JSON object
  * Analyse data types and properties
+ * Snapshot and diff on change
  * Start server automatically for tests.
