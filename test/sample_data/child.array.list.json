@@ -1,0 +1,28 @@
+{
+    "salience": {
+        "content": {
+            "entities": [
+                {
+                    "about": 1,
+                    "name": "Waitrose",
+                    "type": "Company",
+                    "evidence": 1,
+                    "label": "Company",
+                    "sentiment": 0,
+                    "themes": [
+                        "lazy sod"
+                    ],
+                    "confident": 1
+                }
+            ],
+            "sentiment": -3,
+            "topics": [
+                {
+                    "name": "Investing",
+                    "score": 0.48090428113937,
+                    "hits": 0
+                }
+            ]
+        }
+    }
+}

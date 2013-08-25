@@ -71,7 +71,7 @@ vows.describe('Merge JSON objects recursively').addBatch({
         }
     },
     
-    'with many child list items': {
+    'with a new item that has many child list items': {
          topic: function () { 
 					return merge.recursive(JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')), JSON.parse(fs.readFileSync('./test/sample_data/links.multiple.children.json'))
 					);
@@ -82,7 +82,19 @@ vows.describe('Merge JSON objects recursively').addBatch({
         'the links.created_at values are truncated to 3 items': function (topic) {
         	assert.lengthOf (topic.links.created_at, 3);
         }
-        
     },
+    'two objects each with a child object containing an array list': {
+        topic: function () { 
+         	var test = merge.recursive(JSON.parse(fs.readFileSync('./test/sample_data/interaction.json')), JSON.parse(fs.readFileSync('./test/sample_data/child.array.list.json')));
+					return merge.recursive(test, JSON.parse(fs.readFileSync('./test/sample_data/child.array.list.json'))
+					);
+        },
+        'the merged child array list item is an array': function (topic) {
+        	assert.isArray (topic.salience.content.entities);
+        },
+        'the merged child array list items items are not truncated': function (topic) {
+        	assert.deepEqual ([{"about":1,"name":"Waitrose","type":"Company","evidence":1,"label":"Company","sentiment":0,"themes":["lazy sod"],"confident":1}], topic.salience.content.entities);
+        }
+    }    
     
 }).export(module); // Export the Suite
